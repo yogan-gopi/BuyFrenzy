@@ -1,0 +1,48 @@
+
+
+
+<mat-toolbar style="font-size: 30px; background-color: rgb(237, 181, 181)"
+  class="justify-between mx-auto border-x ">
+  <a class = "font-bold" routerLink="home">Webb Store</a>
+  <div class = "flex md:flex md:flex-grow flex-row-reverse space-x-1">
+    <button class = " bg-white rounded-md p-1 " *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</button>
+    <button class=" p-1  bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 border border-gray-700 rounded-full" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</button>
+    <button class="" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
+
+  </div>
+  
+  <mat-menu #menu="matMenu">
+    <div class="p-3 divide-y divide-solid">
+      <div class="pb-3 flex justify-between">
+        <span class="mr-16">{{ cart.items.length }} items</span>
+        <a routerLink="cart">View Cart</a>
+      </div>
+      <div *ngIf="cart.items.length" class="py-3">
+        <div *ngFor="let item of cart.items" class="flex justify-between font-light mb-2">
+          {{ item.name }} x {{ item.quantity }}
+          <span class="font-bold not-italic">{{ item.price | currency:'INR' }}</span>
+        </div>
+      </div>
+      <div class="flex justify-between py-3 font-light">
+        Total:
+        <span class="font-bold not-italic">{{
+          getTotal(cart.items) | currency:'INR'
+          }}</span>
+      </div>
+      <div class="pt-3 flex justify-between">
+        <button (click)="onClearCart()" class="bg-rose-600 text-white rounded-full w-9 h-9">
+          <mat-icon>remove_shopping_cart</mat-icon>
+        </button>
+        <button routerLink="cart" class="bg-green-600 text-white rounded-full w-9 h-9">
+          <mat-icon>shopping_cart_checkout</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-menu>
+</mat-toolbar>
+
+
+
+ 
