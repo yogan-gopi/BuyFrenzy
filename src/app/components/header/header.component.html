@@ -5,13 +5,19 @@
   class="justify-between mx-auto border-x ">
   <a class = "font-bold" routerLink="home">Webb Store</a>
   <div class = "flex md:flex md:flex-grow flex-row-reverse space-x-1">
-    <button class = " bg-white rounded-md p-1 " *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</button>
+    <div class='flex items-center justify-center'>
+      <div class="border rounded-xl shadow-sm">
+          <button class="px-4 py-2 rounded-l-xl text-white m-0 bg-blue-400 hover:bg-blue-600 transition" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</button>
+          <button class="px-4 py-2 rounded-r-xl bg-neutral-50 hover:bg-neutral-100 transition" *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Register</button>
+      </div>
+  </div>
     <button class=" p-1  bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 border border-gray-700 rounded-full" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</button>
     <button class="" mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon [matBadge]="itemsQuantity" [matBadgeHidden]="!itemsQuantity" matBadgeColor="warn">shopping_cart</mat-icon>
     </button>
 
   </div>
+
   
   <mat-menu #menu="matMenu">
     <div class="p-3 divide-y divide-solid">
