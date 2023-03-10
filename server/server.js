@@ -75,8 +75,8 @@ app.post("/checkout", async (req, res, next) => {
                 quantity: item.quantity,
             })),
             mode: "payment",
-            success_url: "http://localhost:6969/success.html",
-            cancel_url: "http://localhost:6969/cancel.html",
+            success_url: "https://e-commerce-yogan-gopi.onrender.com/success.html",
+            cancel_url: "https://e-commerce-yogan-gopi.onrender.com/cancel.html",
         });
 
         res.status(200).json(session);

@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private _registerUrl = "http://localhost:6969/api/register"
-  private _loginUrl = "http://localhost:6969/api/login"
+  private _registerUrl = "https://e-commerce-yogan-gopi.onrender.com/api/register"
+  private _loginUrl = "https://e-commerce-yogan-gopi.onrender.com/api/login"
 
   constructor(private http: HttpClient,
               private _router: Router) { }
