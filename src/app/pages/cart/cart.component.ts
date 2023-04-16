@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class CartComponent implements OnInit, OnDestroy {
   cart: Cart = { items: [] };
-  displayedColumns: string[] = [
+  displayedColumns: string[] = [      
     'product',
     'name',
     'price',
